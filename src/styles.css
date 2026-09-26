@@ -1,0 +1,120 @@
+@import "tailwindcss" source("../");
+
+@theme {
+  --color-ink: #0b0b0c;
+  --color-ink-soft: #16171a;
+  --color-paper: #f4f2ee;
+  --color-paper-dim: #e8e5df;
+  --color-silver: #9a9a9f;
+  --color-silver-dim: #c9c7c2;
+  --color-hairline: #d8d5ce;
+
+  --font-display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --font-body: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --font-editorial: "Instrument Serif", Georgia, serif;
+
+  --ease-soft: cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+:root {
+  --accent: #9a9a9f;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--color-ink);
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-synthesis-weight: none;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Editorial headline defaults: tight leading, negative tracking. */
+.h-display {
+  font-family: var(--font-display);
+  font-weight: 800;
+  line-height: 0.92;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+}
+
+.h-editorial {
+  font-family: var(--font-editorial);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+
+.eyebrow {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.rule {
+  border: 0;
+  border-top: 1px solid var(--color-hairline);
+}
+
+/* Smooth, minimal entrance: fade + short rise, once, on scroll. */
+.reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition:
+    opacity 0.7s var(--ease-soft),
+    transform 0.7s var(--ease-soft);
+  will-change: opacity, transform;
+}
+
+.reveal[data-shown="true"] {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal,
+  .reveal[data-shown="true"] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+.link-underline {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: 0% 1px;
+  transition: background-size 0.35s var(--ease-soft);
+}
+
+.link-underline:hover {
+  background-size: 100% 1px;
+}
+
+input,
+textarea,
+select,
+button {
+  font: inherit;
+  color: inherit;
+}
+
+/* Keep native date pickers legible against the dark form panel. */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+  opacity: 0.6;
+  cursor: pointer;
+}

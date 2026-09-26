@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Form registration</title>
+    <meta name="robots" content="noindex" />
+  </head>
+  <body>
+    <!--
+      This file exists only so Netlify's build-time form detection registers
+      these forms. It is never shown to visitors. Every field the React forms
+      POST must also appear here, or Netlify rejects the submission.
+    -->
+    <form name="general-inquiry" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input type="hidden" name="form-name" value="general-inquiry" />
+      <input name="name" />
+      <input type="email" name="email" />
+      <input name="topic" />
+      <input name="artist-name" />
+      <textarea name="message"></textarea>
+      <input name="bot-field" />
+    </form>
+
+    <form name="studio-booking-request" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input type="hidden" name="form-name" value="studio-booking-request" />
+      <input name="service" />
+      <input name="hours" />
+      <input name="preferred-date" />
+      <input name="alternate-date" />
+      <input name="location-city" />
+      <input name="location-address" />
+      <input name="location-type" />
+      <input name="name" />
+      <input type="email" name="email" />
+      <input name="phone" />
+      <input name="artist-name" />
+      <textarea name="needs"></textarea>
+      <input name="estimated-total" />
+      <input name="estimated-deposit" />
+      <input name="terms-acknowledged" />
+      <input name="bot-field" />
+    </form>
+  </body>
+</html>
